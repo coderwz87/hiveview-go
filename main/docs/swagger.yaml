@@ -1,0 +1,559 @@
+basePath: /api/
+info:
+  contact: {}
+  description: 运维平台
+  title: 运维平台
+  version: 1.0.0
+paths:
+  /addAppDetail/:
+    post:
+      description: 添加应用信息
+      operationId: add-application-detail
+      parameters:
+      - description: app名字
+        in: formData
+        name: app_name
+        required: true
+        type: string
+      - description: 主机名
+        in: formData
+        name: host
+        required: true
+        type: string
+      - description: 目录
+        in: formData
+        name: dir
+        required: true
+        type: string
+      - description: 类型
+        in: formData
+        name: type
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{"code":200,"msg":"创建成功"}'
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Application
+  /addMysqlBackupDetail/:
+    post:
+      description: 添加Mysql备份信息
+      operationId: add-mysql-backup-detail
+      parameters:
+      - description: 数据库实例名字
+        in: formData
+        name: db_name
+        required: true
+        type: string
+      - description: 实例端口号
+        in: formData
+        name: db_port
+        required: true
+        type: string
+      - description: 备份服务器地址
+        in: formData
+        name: remote_server
+        required: true
+        type: string
+      - description: 备份目录
+        in: formData
+        name: remote_dir
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{"code":200,"msg":"已创建"}'
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - mysqlBackup
+  /addServer/:
+    post:
+      description: 添加资产信息
+      operationId: add-server
+      parameters:
+      - description: ip
+        in: formData
+        name: ip
+        required: true
+        type: string
+      - description: idc名字
+        in: formData
+        name: idc
+        type: string
+      - description: 备注
+        in: formData
+        name: comment
+        type: string
+      - description: 用途
+        in: formData
+        name: use
+        type: string
+      - description: 机柜号
+        in: formData
+        name: cabinet
+        type: string
+      - description: U位
+        in: formData
+        name: uPosition
+        type: string
+      responses:
+        "200":
+          description: '{"code":200,"msg":"已开始创建"}'
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - asset
+  /allMysqlBackupInfo/:
+    get:
+      description: 获取全部Mysql备份信息
+      operationId: get-all-mysql-backup-detail
+      responses:
+        "200":
+          description: '{"code":200,"msg":"success","data":[...]}'
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - mysqlBackup
+  /allOtherBackupInfo/:
+    get:
+      description: 获取全部其他项目备份信息
+      operationId: get-all-other-backup-detail
+      responses:
+        "200":
+          description: '{"code":200,"msg":"success","data":[...]}'
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - otherBackup
+  /appDetail/{id}/:
+    delete:
+      description: 删除单条信息
+      operationId: delete-application-detail
+      parameters:
+      - description: 应用id
+        in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: '{"code":200,"msg":"success"}'
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Application
+  /common/link/:
+    get:
+      description: 获取全部常用连接信息
+      operationId: get-all-common-link
+      responses:
+        "200":
+          description: '{"code":200,"msg":"success","data":[...]}'
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - common
+  /deleteAllAppDetail/:
+    delete:
+      description: 批量删除应用信息
+      operationId: delete-all-application-detail
+      parameters:
+      - in: formData
+        items:
+          type: integer
+        name: detail_ids
+        type: array
+      responses:
+        "200":
+          description: '{"code":200,"msg":"已全部删除"}'
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Application
+  /deleteAllMysqlBackupDetail/:
+    delete:
+      description: 删除全部Mysql备份信息
+      operationId: delete-all-mysql-backup-detail
+      parameters:
+      - in: formData
+        items:
+          type: integer
+        name: detail_ids
+        type: array
+      responses:
+        "200":
+          description: '{"code":200,"msg":"已全部删除"}'
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - mysqlBackup
+  /deleteAllServer/:
+    delete:
+      description: 批量删除资产信息
+      operationId: delete-all-server
+      parameters:
+      - in: formData
+        items:
+          type: integer
+        name: server_ids
+        type: array
+      responses:
+        "200":
+          description: '{"code":200,"msg":"已全部删除"}'
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - asset
+  /getAllAppDetail/:
+    get:
+      description: 获取全部应用信息
+      operationId: get-all-application-detail
+      responses:
+        "200":
+          description: '{"code":200,"msg":"success","data":[...]}'
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Application
+  /getAllServer/:
+    get:
+      description: 获取全部资产信息
+      operationId: get-all-server
+      responses:
+        "200":
+          description: '{"code":200,"msg":"success","data":[...]}'
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - asset
+  /mysqlBackupDetail/{id}/:
+    delete:
+      description: 删除单条Mysql备份信息
+      operationId: delete-mysql-backup-detail
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{"code":200,"msg":"success"}'
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - mysqlBackup
+  /operationApp/:
+    post:
+      description: 操作应用
+      operationId: operation-application
+      parameters:
+      - description: id
+        in: formData
+        name: id
+        required: true
+        type: string
+      - description: 操作动作
+        in: formData
+        name: action
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{"code":200,"msg":"已开始操作"}'
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Application
+  /server/{id}/:
+    delete:
+      description: 删除资产信息
+      operationId: delete-server
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{"code":200,"msg":"success"}'
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - asset
+    get:
+      description: 获取单台资产信息
+      operationId: get-server
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{"code":200,"msg":"success","data":{object}}'
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - asset
+    patch:
+      description: 更新资产信息
+      operationId: update-server
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: idc名字
+        in: formData
+        name: idc
+        type: string
+      - description: 备注
+        in: formData
+        name: comment
+        type: string
+      - description: 用途
+        in: formData
+        name: use
+        type: string
+      - description: 机柜号
+        in: formData
+        name: cabinet
+        type: string
+      - description: U位
+        in: formData
+        name: uPosition
+        type: string
+      responses:
+        "200":
+          description: '{"code":200,"msg":"更新成功"}'
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - asset
+  /serviceInit/mysql/:
+    post:
+      description: mysql初始化
+      operationId: mysql-init
+      parameters:
+      - description: 初始化服务器
+        in: formData
+        name: ip
+        required: true
+        type: string
+      - description: 数据库版本
+        in: formData
+        name: version
+        required: true
+        type: string
+      - description: 实例端口号
+        in: formData
+        name: port
+        required: true
+        type: string
+      - description: 实例名
+        in: formData
+        name: name
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{"code":200,"msg":"已开始初始化"}'
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - service
+  /serviceInit/redis/:
+    post:
+      description: redis初始化
+      operationId: redis-init
+      parameters:
+      - description: 初始化服务器
+        in: formData
+        name: ip
+        required: true
+        type: string
+      - description: redis最大内存
+        in: formData
+        name: memsize
+        required: true
+        type: string
+      - description: 实例端口号
+        in: formData
+        name: port
+        required: true
+        type: string
+      - description: 实例名
+        in: formData
+        name: name
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{"code":200,"msg":"已开始初始化"}'
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - service
+  /updateAppDetailState/:
+    put:
+      description: 更新应用状态
+      operationId: update-application-detail
+      parameters:
+      - description: app名字
+        in: formData
+        name: app_name
+        required: true
+        type: string
+      - description: 主机名
+        in: formData
+        name: host
+        required: true
+        type: string
+      - description: 目录
+        in: formData
+        name: dir
+        required: true
+        type: string
+      - description: 类型
+        in: formData
+        name: type
+        required: true
+        type: string
+      - description: 状态
+        in: formData
+        name: state
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{"code":200,"msg":"已更新"}'
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Application
+  /updateMysqlBackupDetail/:
+    put:
+      description: 更新mysql备份信息
+      operationId: update-mysql-backup-detail
+      parameters:
+      - description: 数据库实例名
+        in: formData
+        name: db_name
+        required: true
+        type: string
+      - description: 端口号
+        in: formData
+        name: db_port
+        required: true
+        type: string
+      - description: 备份服务器地址
+        in: formData
+        name: remote_server
+        required: true
+        type: string
+      - description: 备份目录
+        in: formData
+        name: remote_dir
+        required: true
+        type: string
+      - description: 备份信息
+        in: formData
+        name: backup_log
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{"code":200,"msg":"已更新"}'
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - mysqlBackup
+  /updateOtherBackupDetail/:
+    put:
+      description: 更新其他项目备份信息
+      operationId: update-other-backup-detail
+      parameters:
+      - description: 项目名字
+        in: formData
+        name: project_name
+        required: true
+        type: string
+      - description: 备份服务器地址
+        in: formData
+        name: remote_server
+        required: true
+        type: string
+      - description: 备份目录
+        in: formData
+        name: remote_dir
+        required: true
+        type: string
+      - description: 备份信息
+        in: formData
+        name: backup_log
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{"code":200,"msg":"已更新"}'
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - otherBackup
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: token
+    type: apiKey
+swagger: "2.0"

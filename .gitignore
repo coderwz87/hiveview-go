@@ -1,4 +1,3 @@
-config/*
+config/settings.yaml
 *.exe
-log/*
-.idea/*
+log/

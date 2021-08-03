@@ -1,15 +1,15 @@
 settings:
   database:
     host:
-      10.240.37.20
+      0.0.0.0
     port:
       3306
     user:
-      jumpserver
+      test
     password:
-      jumpserver
+      test
     dbname:
-      hiveview
+      test
 
   application:
     host:
@@ -19,7 +19,7 @@ settings:
 
   ansible:
     factsdir:
-      D:\家视天下\crtfile\
+      /tmp/fact
     inventory:
       /root/getAnsibleHost.py
   log:

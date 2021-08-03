@@ -19,21 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ba6edfb6-9091-4d46-aa4f-2832224c9f30" name="Default Changelist" comment="add password api">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/settings.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/settings.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/asset/asset.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/asset/asset.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/user/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/user/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/initConfig.go" beforeDir="false" afterPath="$PROJECT_DIR$/initConfig.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/hiveview.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/hiveview.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/hiveview.log.20210720" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/hiveview_access.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/hiveview_access.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/hiveview_access.log.20210714" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/hiveview_access.log.20210720" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/router/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/router.go" afterDir="false" />
-    </list>
+    <list default="true" id="ba6edfb6-9091-4d46-aa4f-2832224c9f30" name="Default Changelist" comment="add password api" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -93,7 +79,7 @@
       <go_parameters value="-i" />
       <kind value="FILE" />
       <filePath value="$PROJECT_DIR$" />
-      <package value="hiveview-gin" />
+      <package value="hiveview" />
       <directory value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
@@ -103,7 +89,7 @@
       <go_parameters value="-i" />
       <framework value="gotest" />
       <kind value="DIRECTORY" />
-      <package value="hiveview-gin" />
+      <package value="hiveview" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <method v="2" />
@@ -114,7 +100,7 @@
       <go_parameters value="-i" />
       <kind value="FILE" />
       <filePath value="$PROJECT_DIR$" />
-      <package value="hiveview" />
+      <package value="hiveview-gin" />
       <directory value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
@@ -124,7 +110,7 @@
       <go_parameters value="-i" />
       <framework value="gotest" />
       <kind value="DIRECTORY" />
-      <package value="hiveview" />
+      <package value="hiveview-gin" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <method v="2" />
@@ -230,10 +216,10 @@
       <screen x="2880" y="0" width="1920" height="1040" />
     </state>
     <state x="3176" y="91" key="SettingsEditor/0.0.1440.860/2880.0.1920.1040@2880.0.1920.1040" timestamp="1627974708626" />
-    <state x="3432" y="253" key="Vcs.Push.Dialog.v2" timestamp="1627975894082">
+    <state x="3432" y="253" key="Vcs.Push.Dialog.v2" timestamp="1627981321400">
       <screen x="2880" y="0" width="1920" height="1040" />
     </state>
-    <state x="3432" y="253" key="Vcs.Push.Dialog.v2/0.0.1440.860/2880.0.1920.1040@2880.0.1920.1040" timestamp="1627975894082" />
+    <state x="3432" y="253" key="Vcs.Push.Dialog.v2/0.0.1440.860/2880.0.1920.1040@2880.0.1920.1040" timestamp="1627981321400" />
     <state x="3503" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1622021551980">
       <screen x="2880" y="0" width="1920" height="1040" />
     </state>

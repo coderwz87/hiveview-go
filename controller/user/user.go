@@ -29,3 +29,19 @@ func Login(c *gin.Context) {
 
 	render.JSON(c, data)
 }
+
+func ChangeUserPassword(c *gin.Context) {
+	password := c.PostForm("password")
+	claims, _ := c.Get("claims")
+	username := claims.(*utils.CustomClaims).Username
+	var user = new(models.Users)
+	user.Username = username
+	user.Password = password
+	ifSuccess := user.UpdatePassword(hiveview.CONFIG.Db)
+	if ifSuccess {
+		render.MSG(c, "已修改")
+	} else {
+		render.DataError(c, "修改失败")
+	}
+
+}

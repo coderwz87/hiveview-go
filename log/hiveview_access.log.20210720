@@ -1,2 +1,0 @@
-time="2021-07-20T15:43:44+08:00" level=info msg="| 200 |     20.6697ms |       127.0.0.1 | GET | /api/getAllAppName/ |"
-time="2021-07-20T15:46:24+08:00" level=info msg="| 200 |      5.5128ms |       127.0.0.1 | GET | /api/getAllAppName/ |"

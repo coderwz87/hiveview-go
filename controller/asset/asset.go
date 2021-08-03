@@ -110,6 +110,7 @@ func GetServer(c *gin.Context) {
 		render.DataError(c, "查询失败")
 		return
 	}
+
 	render.JSON(c, result)
 
 }

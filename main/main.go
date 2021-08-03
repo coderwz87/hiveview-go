@@ -29,6 +29,8 @@ func main() {
 	hiveview.CONFIG.InitGin()
 	//初始化router
 	router.InitRouter(hiveview.CONFIG.Gin)
+	//初始化admin用户
+	hiveview.InitUser()
 	//初始化CRON
 	cron := hiveview.InitCron()
 	utils.InitCronJob(cron)

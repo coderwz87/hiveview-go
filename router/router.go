@@ -21,6 +21,7 @@ func InitRouter(Gin *gin.Engine) {
 
 	api := Gin.Group("/api", middlewares.LoggerToFile(), middlewares.JWTAuth())
 	api.POST("/login/", user.Login)
+	api.POST("/ChangeUserPassword/", user.ChangeUserPassword)
 
 	api.GET("/dashboard/", dashboard.Dashboard)
 	api.GET("/dashboardUpdateLog/", dashboard.AppUpdateLog)

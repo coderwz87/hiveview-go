@@ -99,3 +99,18 @@ func InitCron() *cron.Cron {
 	c := cron.New()
 	return c
 }
+
+func InitUser() {
+	ifCreateAdminUser := models.IfInitAdminUser(CONFIG.Db)
+	if ifCreateAdminUser {
+		var admin = models.Users{
+			Username: "admin",
+			Password: "123456",
+		}
+		err := admin.CreateUser(CONFIG.Db)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+	}
+}

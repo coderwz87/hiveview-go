@@ -36,3 +36,18 @@ func (u *Users) PasswordMD5() string {
 	has := md5.Sum(password)
 	return fmt.Sprintf("%x", has)
 }
+
+func IfInitAdminUser(db *gorm.DB) bool {
+	var tmp []Users
+	r := db.Find(&tmp)
+	return r.RowsAffected == 0
+}
+
+func (u *Users) UpdatePassword(db *gorm.DB) bool {
+	psswordMD5 := u.PasswordMD5()
+	result := db.Model(u).Where("username = ?", u.Username).Update("password", psswordMD5)
+	if result.Error != nil {
+		return false
+	}
+	return true
+}

@@ -1,4 +1,4 @@
-config/
+config/*
 *.exe
-log/
-/workspace.xml
+log/*
+.idea/*

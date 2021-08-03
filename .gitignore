@@ -1,4 +1,4 @@
-config/settings.yaml
+settings.yaml
 *.exe
 log/
 .idea

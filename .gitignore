@@ -1,0 +1,4 @@
+config/
+*.exe
+log/
+/workspace.xml

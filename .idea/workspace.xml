@@ -20,8 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba6edfb6-9091-4d46-aa4f-2832224c9f30" name="Default Changelist" comment="first commit">
-      <change afterPath="$PROJECT_DIR$/README.MD" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.MD" beforeDir="false" afterPath="$PROJECT_DIR$/README.MD" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -213,10 +213,10 @@
       <screen x="2880" y="0" width="1920" height="1040" />
     </state>
     <state x="3176" y="91" key="SettingsEditor/0.0.1440.860/2880.0.1920.1040@2880.0.1920.1040" timestamp="1627974708626" />
-    <state x="3432" y="253" key="Vcs.Push.Dialog.v2" timestamp="1627975230657">
+    <state x="3432" y="253" key="Vcs.Push.Dialog.v2" timestamp="1627975845019">
       <screen x="2880" y="0" width="1920" height="1040" />
     </state>
-    <state x="3432" y="253" key="Vcs.Push.Dialog.v2/0.0.1440.860/2880.0.1920.1040@2880.0.1920.1040" timestamp="1627975230657" />
+    <state x="3432" y="253" key="Vcs.Push.Dialog.v2/0.0.1440.860/2880.0.1920.1040@2880.0.1920.1040" timestamp="1627975845019" />
     <state x="3503" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1622021551980">
       <screen x="2880" y="0" width="1920" height="1040" />
     </state>

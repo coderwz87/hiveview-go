@@ -5,6 +5,9 @@ go build
 
 mkdir config dir and touch settings.yaml like :
 
+
+
+
 settings:
 
   database:

@@ -10,6 +10,9 @@ settings:
       test
     dbname:
       test
+  enforcer:
+    confpath:
+      D:\goproject\src\hiveview\config\rbac_model.conf
 
   application:
     host:

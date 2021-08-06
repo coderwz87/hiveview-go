@@ -27,6 +27,12 @@ func main() {
 	hiveview.CONFIG.Migrate()
 	//初始化GIN
 	hiveview.CONFIG.InitGin()
+	//初始化enforcer
+	err := hiveview.CONFIG.InitEnforcer()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 	//初始化router
 	router.InitRouter(hiveview.CONFIG.Gin)
 	//初始化admin用户
@@ -36,7 +42,7 @@ func main() {
 	utils.InitCronJob(cron)
 
 	////运行gin
-	err := hiveview.CONFIG.Gin.Run(fmt.Sprintf("%s:%s", hiveview.CONFIG.Settings.Application.Host, hiveview.CONFIG.Settings.Application.Port))
+	err = hiveview.CONFIG.Gin.Run(fmt.Sprintf("%s:%s", hiveview.CONFIG.Settings.Application.Host, hiveview.CONFIG.Settings.Application.Port))
 	if err != nil {
 		utils.LogPrint("err", err)
 	}

@@ -2,6 +2,8 @@ package hiveview
 
 import (
 	"fmt"
+	"github.com/casbin/casbin/v2"
+	gormadapter "github.com/casbin/gorm-adapter/v3"
 	"github.com/gin-gonic/gin"
 	rotatelogs "github.com/lestrrat-go/file-rotatelogs"
 	"github.com/robfig/cron"
@@ -100,6 +102,7 @@ func InitCron() *cron.Cron {
 	return c
 }
 
+//初始化管理员账号密码
 func InitUser() {
 	ifCreateAdminUser := models.IfInitAdminUser(CONFIG.Db)
 	if ifCreateAdminUser {
@@ -113,4 +116,20 @@ func InitUser() {
 			return
 		}
 	}
+}
+
+//初始化enforcer
+func (CONFIG *Settings) InitEnforcer() error {
+	var enforcerMysql = fmt.Sprintf("%s:%s@tcp(%s:%s)/", CONFIG.Settings.Database.User, CONFIG.Settings.Database.Password, CONFIG.Settings.Database.Host, CONFIG.Settings.Database.Port)
+	link, _ := gormadapter.NewAdapter("mysql", enforcerMysql)
+	var err error
+	CONFIG.Enforcer, err = casbin.NewEnforcer(CONFIG.Settings.Enforcer.ConfPath, link)
+	if err != nil {
+		return err
+	}
+
+	CONFIG.Enforcer.EnableLog(true)
+	CONFIG.Enforcer.LoadPolicy()
+
+	return nil
 }

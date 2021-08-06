@@ -19,9 +19,10 @@ func InitRouter(Gin *gin.Engine) {
 
 	Gin.Use(middlewares.Cors())
 
-	api := Gin.Group("/api", middlewares.LoggerToFile(), middlewares.JWTAuth())
+	api := Gin.Group("/api", middlewares.LoggerToFile(), middlewares.JWTAuth(), middlewares.PermissionMiddleWare())
 	api.POST("/login/", user.Login)
 	api.POST("/ChangeUserPassword/", user.ChangeUserPassword)
+	api.POST("/addUser/", user.AddUser)
 
 	api.GET("/dashboard/", dashboard.Dashboard)
 	api.GET("/dashboardUpdateLog/", dashboard.AppUpdateLog)

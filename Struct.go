@@ -1,6 +1,7 @@
 package hiveview
 
 import (
+	"github.com/casbin/casbin/v2"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 	"gorm.io/gorm"
@@ -13,6 +14,7 @@ type Settings struct {
 	Gin          *gin.Engine
 	Logger       *logrus.Logger
 	AccessLogger *logrus.Logger
+	Enforcer     *casbin.Enforcer
 }
 
 type Config struct {
@@ -20,6 +22,7 @@ type Config struct {
 	Application ApplicationConfig `yaml:"application"`
 	Ansible     AnsibleConfig     `yaml:"ansible"`
 	Log         LogConfig         `yaml:"log"`
+	Enforcer    EnforcerConfig    `yaml:"enforcer"`
 }
 
 type DatabaseConfig struct {
@@ -45,4 +48,8 @@ type LogConfig struct {
 	LogName       string `yaml:"logname"`
 	AccessLogPath string `yaml:"accesslogpath"`
 	AccessLogName string `yaml:"accesslogname"`
+}
+
+type EnforcerConfig struct {
+	ConfPath string `yaml:"confpath"`
 }

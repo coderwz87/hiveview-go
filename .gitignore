@@ -2,3 +2,4 @@ settings.yaml
 *.exe
 log/
 .idea
+main/main

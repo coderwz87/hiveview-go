@@ -194,31 +194,90 @@ func DeleteAllAppDetail(c *gin.Context) {
 // @Security ApiKeyAuth
 // @Router /operationApp/ [post]
 func OperationApp(c *gin.Context) {
-	id := c.PostForm("id")
-	Action := c.PostForm("action")
-	result := new(models.AppDetail)
-	ID, err := strconv.Atoi(id)
+	appID := c.Query("appID")
+	action := c.Query("action")
+	claims, _ := c.Get("claims")
+	username := claims.(*utils.CustomClaims).Username
+	appDetail := new(models.AppDetail)
+	ID, err := strconv.Atoi(appID)
 	if err != nil {
 		render.DataError(c, err.Error())
 		return
 	}
-	result.ID = uint(ID)
-	err = result.GetAppDetailByID(hiveview.CONFIG.Db)
-	playbookName := "/etc/ansible/playbook/operation_app.yaml"
-	data := make(map[string]string)
-	data["hosts"] = result.Host
-	data["AppName"] = result.AppName
-	data["Dir"] = result.Dir
-	data["Type"] = result.Type
-	data["action"] = Action
-	go func() {
-		err = utils.AnsiblePlaybook(playbookName, data)
-		if err != nil {
-			utils.LogPrint("err", err)
-		}
-	}()
-	render.MSG(c, "已开始操作")
+	appDetail.ID = uint(ID)
+	err = appDetail.GetAppDetailByID(hiveview.CONFIG.Db)
+	if err != nil {
+		utils.LogPrint("err", err)
+		render.DataError(c, err.Error())
+		return
+	}
+	if username == "admin" {
+		playbookName := "/etc/ansible/playbook/operation_app.yaml"
+		data := make(map[string]string)
+		data["hosts"] = appDetail.Host
+		data["AppName"] = appDetail.AppName
+		data["Dir"] = appDetail.Dir
+		data["Type"] = appDetail.Type
+		data["action"] = action
+		go func() {
+			err = utils.AnsiblePlaybook(playbookName, data)
+			if err != nil {
+				utils.LogPrint("err", err)
+			}
+		}()
+		render.MSG(c, "已开始操作")
+		return
+	}
+	var operationDetail = new(models.OperationDetail)
+	operationDetail.Host = appDetail.Host
+	operationDetail.AppName = appDetail.AppName
+	operationDetail.Dir = appDetail.Dir
+	operationDetail.Type = appDetail.Type
+	operationDetail.Action = action
+	operationDetail.State = "确认中"
+	operationDetail.User = username
+	err = operationDetail.CreateOperationDetail(hiveview.CONFIG.Db)
+	if err != nil {
+		utils.LogPrint("err", err)
+		render.DataError(c, err.Error())
+		return
+	}
+	dingMSG := fmt.Sprintf("http://211.103.138.124:18080/OperationDetail/%d/", operationDetail.ID)
+	err = utils.SendMsgToDD(dingMSG)
+	if err != nil {
+		utils.LogPrint("err", err)
+		render.DataError(c, err.Error())
+		return
+	}
+	render.MSG(c, "已发送确认信息")
 }
+
+//func OperationApp(c *gin.Context) {
+//	id := c.PostForm("id")
+//	Action := c.PostForm("action")
+//	result := new(models.AppDetail)
+//	ID, err := strconv.Atoi(id)
+//	if err != nil {
+//		render.DataError(c, err.Error())
+//		return
+//	}
+//	result.ID = uint(ID)
+//	err = result.GetAppDetailByID(hiveview.CONFIG.Db)
+//	playbookName := "/etc/ansible/playbook/operation_app.yaml"
+//	data := make(map[string]string)
+//	data["hosts"] = result.Host
+//	data["AppName"] = result.AppName
+//	data["Dir"] = result.Dir
+//	data["Type"] = result.Type
+//	data["action"] = Action
+//	go func() {
+//		err = utils.AnsiblePlaybook(playbookName, data)
+//		if err != nil {
+//			utils.LogPrint("err", err)
+//		}
+//	}()
+//	render.MSG(c, "已开始操作")
+//}
 
 // @title 搜索应用信息
 // @version 1.0.0

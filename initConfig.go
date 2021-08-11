@@ -48,7 +48,7 @@ func (CONFIG *Settings) InitDB() {
 
 // 数据库初始化
 func (CONFIG *Settings) Migrate() {
-	CONFIG.Db.AutoMigrate(&models.Users{}, &models.Assets{}, &models.CommonLink{}, &models.MysqlBackupDetail{}, &models.OtherBackupDetail{}, &models.AppDetail{}, &models.ApplicationUpdateLog{})
+	CONFIG.Db.AutoMigrate(&models.Users{}, &models.Assets{}, &models.CommonLink{}, &models.MysqlBackupDetail{}, &models.OtherBackupDetail{}, &models.AppDetail{}, &models.ApplicationUpdateLog{}, &models.OperationDetail{})
 	//CONFIG.Db.AutoMigrate(&models.Assets{})
 
 }

@@ -46,7 +46,5 @@ func main() {
 	if err != nil {
 		utils.LogPrint("err", err)
 	}
-	//a, _ := utils.ZabbixGetToken()
-	//sb, _ := utils.ZabbixGetHostId(a, "10-240-37-5")
-	//fmt.Println(sb)
+
 }

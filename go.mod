@@ -6,6 +6,7 @@ require (
 	github.com/360EntSecGroup-Skylar/excelize/v2 v2.4.0
 	github.com/alecthomas/template v0.0.0-20190718012654-fb15b899a751
 	github.com/apenella/go-ansible v1.1.0
+	github.com/blinkbean/dingtalk v0.0.0-20201231030509-45a553a84503 // indirect
 	github.com/casbin/casbin v1.9.1 // indirect
 	github.com/casbin/casbin/v2 v2.35.0 // indirect
 	github.com/casbin/gorm-adapter v1.0.0 // indirect

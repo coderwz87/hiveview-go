@@ -9,6 +9,7 @@ import (
 	"hiveview/controller/backup"
 	"hiveview/controller/commonTools"
 	"hiveview/controller/dashboard"
+	"hiveview/controller/operation"
 	"hiveview/controller/service"
 	"hiveview/controller/user"
 	_ "hiveview/main/docs"
@@ -42,7 +43,7 @@ func InitRouter(Gin *gin.Engine) {
 	api.DELETE("/appDetail/:id/", application.DeleteApplicationDetail)
 	api.DELETE("/deleteAllAppDetail/", application.DeleteAllAppDetail)
 	api.PUT("/updateAppDetailState/", application.UpdateApplicationState)
-	api.POST("/operationApp/", application.OperationApp)
+	api.GET("/operationApp/", application.OperationApp)
 	api.GET("/searchAppDetail/", application.SearchApplicationDetail)
 	api.GET("/AppDetail/:id/", application.GetApplicationDetail)
 	api.GET("/getAllAppName/", service.ResinProjectName)
@@ -69,7 +70,9 @@ func InitRouter(Gin *gin.Engine) {
 
 	api.GET("/allOtherBackupInfo/", backup.GetAllOtherBackupDetail)
 	api.PUT("/updateOtherBackupDetail/", backup.UpdateOtherBackupDetail)
-
+	api.GET("/operationDetail/:id/", operation.GetOperationDetail)
+	api.POST("/OperationApprove/", operation.OperationApprove)
+	api.GET("/GetAllOperationDetail/", operation.GetAllOperationDetail)
 	url := ginSwagger.URL("http://127.0.0.1:9090/swagger/doc.json")
 	Gin.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, url))
 }

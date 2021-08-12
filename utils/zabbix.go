@@ -3,6 +3,7 @@ package utils
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"hiveview/models"
 	"io/ioutil"
 	"net/http"
@@ -108,6 +109,10 @@ func ZabbixGetHostId(token string, hostname string) (id string, err error) {
 		LogPrint("err", err)
 		return
 	}
+	if len(result.Result) == 0 {
+		err := fmt.Errorf("zabbix不存在此服务器")
+		return "", err
+	}
 	return result.Result[0]["hostid"], err
 }
 
@@ -118,6 +123,9 @@ func ZabbixDeleteHost(asset *models.Assets) (err error) {
 		return
 	}
 	hostId, err := ZabbixGetHostId(token, asset.Hostname)
+	if hostId == "" {
+		return nil
+	}
 	var deleteData = map[string]interface{}{
 		"jsonrpc": "2.0",
 		"method":  "host.delete",

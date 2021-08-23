@@ -7,6 +7,7 @@ import (
 	"hiveview/controller/application"
 	"hiveview/controller/asset"
 	"hiveview/controller/backup"
+	"hiveview/controller/batch"
 	"hiveview/controller/commonTools"
 	"hiveview/controller/dashboard"
 	"hiveview/controller/operation"
@@ -73,6 +74,16 @@ func InitRouter(Gin *gin.Engine) {
 	api.GET("/operationDetail/:id/", operation.GetOperationDetail)
 	api.POST("/OperationApprove/", operation.OperationApprove)
 	api.GET("/GetAllOperationDetail/", operation.GetAllOperationDetail)
+
+	api.POST("/batch/uploadFile/", batch.UploadFile)
+	api.GET("/batch/fileList/", batch.FileList)
+	api.GET("/batch/groupList/", batch.GroupList)
+	api.POST("/batch/groupIpList/", batch.GroupIpList)
+	api.POST("/batch/filePush/", batch.FilePush)
+	api.POST("/batch/execCommand/", batch.CommandExec)
+	api.GET("/batch/allLog/", batch.GetAllBatchLog)
+	api.GET("/batch/logContext/:id/", batch.GetBatchLogDetail)
+
 	url := ginSwagger.URL("http://127.0.0.1:9090/swagger/doc.json")
 	Gin.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, url))
 }

@@ -30,7 +30,6 @@ func AnsiblePlaybook(PlaybookName string, extraVars map[string]string) error {
 	var err error
 	var res = new(AnsibleResult)
 	buff := new(bytes.Buffer)
-
 	ansiblePlaybookConnectionOptions := &options.AnsibleConnectionOptions{
 		//Connection: "local",
 		User: "root",

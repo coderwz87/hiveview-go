@@ -40,7 +40,7 @@ func main() {
 	//初始化CRON
 	cron := hiveview.InitCron()
 	utils.InitCronJob(cron)
-
+	//utils.AnsibleAdhoc()
 	////运行gin
 	err = hiveview.CONFIG.Gin.Run(fmt.Sprintf("%s:%s", hiveview.CONFIG.Settings.Application.Host, hiveview.CONFIG.Settings.Application.Port))
 	if err != nil {

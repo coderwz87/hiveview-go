@@ -110,6 +110,26 @@ func GetAssetIdc(db *gorm.DB) []string {
 	return result
 }
 
+func GetAssetByComment(db *gorm.DB, comment string) []string {
+	var resultList []Assets
+	var result []string
+	db.Where("comment = ?", fmt.Sprintf(comment)).Find(&resultList)
+	for _, v := range resultList {
+		result = append(result, v.IP)
+	}
+	return result
+}
+
+func GetAssetComment(db *gorm.DB) []string {
+	var resultList []Assets
+	var result []string
+	db.Distinct("comment").Find(&resultList)
+	for _, v := range resultList {
+		result = append(result, v.Comment)
+	}
+	return result
+}
+
 func GetAssetIDCCount(db *gorm.DB) (int, int) {
 	var beijingResultList []Assets
 	var otherResultList []Assets

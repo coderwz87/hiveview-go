@@ -84,7 +84,7 @@ func FilePush(c *gin.Context) {
 		utils.LogPrint("err", err)
 	}
 	go func() {
-		err := utils.AnsibleAdhoc("copy", arg, IP, logPath)
+		err = utils.AnsibleAdhoc("copy", arg, IP, logPath)
 		if err != nil {
 			utils.LogPrint("err", err)
 			return
@@ -151,16 +151,18 @@ func CommandExec(c *gin.Context) {
 	logRecord.Type = "exec shell"
 	logRecord.LogFile = logPath
 	logRecord.Detail = fmt.Sprintf("exec %s", Command)
-	err := logRecord.CreateBatchLog(hiveview.CONFIG.Db)
-	if err != nil {
-		utils.LogPrint("err", err)
-	}
+
 	go func() {
 		err := utils.AnsibleAdhoc("shell", Command, IP, logPath)
 		if err != nil {
 			utils.LogPrint("err", err)
 			return
 		}
+		err = logRecord.CreateBatchLog(hiveview.CONFIG.Db)
+		if err != nil {
+			utils.LogPrint("err", err)
+		}
+
 	}()
 	render.MSG(c, "已开始执行")
 }

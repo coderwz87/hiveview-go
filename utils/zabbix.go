@@ -4,16 +4,15 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"hiveview"
 	"hiveview/models"
 	"io/ioutil"
 	"net/http"
 )
 
-var (
-	USERNAME = hiveview.CONFIG.Settings.Zabbix.UserName
-	PASSWORD = hiveview.CONFIG.Settings.Zabbix.Password
-	URL      = hiveview.CONFIG.Settings.Zabbix.Url
+const (
+	USERNAME = "Admin"
+	PASSWORD = "hiveview@2020"
+	URL      = "http://124.205.11.222/api_jsonrpc.php"
 )
 
 type TokenRes struct {

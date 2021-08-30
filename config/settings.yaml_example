@@ -34,3 +34,8 @@ settings:
       D:\goproject\src\hiveview\log\
     accesslogname:
       hiveview_access.log
+
+  zabbix:
+    username: test
+    password: test
+    url: http://0.0.0.0/api_jsonrpc.php

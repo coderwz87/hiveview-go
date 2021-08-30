@@ -23,8 +23,14 @@ type Config struct {
 	Ansible     AnsibleConfig     `yaml:"ansible"`
 	Log         LogConfig         `yaml:"log"`
 	Enforcer    EnforcerConfig    `yaml:"enforcer"`
+	Zabbix      Zabbix            `yaml:"zabbix"`
 }
 
+type Zabbix struct {
+	UserName string `yaml:"username"`
+	Password string `yaml:"password"`
+	Url      string `yaml:"url"`
+}
 type DatabaseConfig struct {
 	Host     string `yaml:host`
 	Port     string `yaml:"port"`

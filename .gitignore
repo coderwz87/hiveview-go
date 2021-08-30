@@ -3,4 +3,3 @@ settings.yaml
 log/
 .idea
 main/main
-utils/zabbix*

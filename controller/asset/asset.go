@@ -187,11 +187,11 @@ func DeleteServer(c *gin.Context) {
 		render.DataError(c, fmt.Sprintf("删除prometheus异常:%s", err))
 		return
 	}
-	err = utils.ZabbixDeleteHost(result)
-	if err != nil {
-		render.DataError(c, fmt.Sprintf("删除zabbix异常:%s", err))
-		return
-	}
+	//err = utils.ZabbixDeleteHost(result)
+	//if err != nil {
+	//	render.DataError(c, fmt.Sprintf("删除zabbix异常:%s", err))
+	//	return
+	//}
 	os.Remove(fmt.Sprintf("%s%s", hiveview.CONFIG.Settings.Ansible.Factsdir, result.IP))
 	err = result.DeleteAssetByID(hiveview.CONFIG.Db)
 	if err != nil {
@@ -234,11 +234,11 @@ func DeleteAllServer(c *gin.Context) {
 			render.DataError(c, fmt.Sprintf("删除异常:%s", err))
 			return
 		}
-		err = utils.ZabbixDeleteHost(result)
-		if err != nil {
-			render.DataError(c, fmt.Sprintf("删除zabbix异常:%s", err))
-			return
-		}
+		//err = utils.ZabbixDeleteHost(result)
+		//if err != nil {
+		//	render.DataError(c, fmt.Sprintf("删除zabbix异常:%s", err))
+		//	return
+		//}
 		result.DeleteAssetByID(hiveview.CONFIG.Db)
 	}
 	render.MSG(c, "已全部删除")

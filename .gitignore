@@ -3,3 +3,4 @@ settings.yaml
 log/
 .idea
 main/main
+zabbix.go
